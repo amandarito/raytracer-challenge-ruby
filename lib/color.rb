@@ -10,7 +10,7 @@ class Color < Tuple
     end
 
     def hm_product(other)
-        color(self.red * other.red, self.green * other.green, self.blue * other.blue)
+        Color.new(self.red * other.red, self.green * other.green, self.blue * other.blue)
     end
 
     def *(other)

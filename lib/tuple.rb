@@ -1,3 +1,5 @@
+require_relative "helpers.rb"
+
 # Tuple is the fundamental point / vector class.
 # Attributes (x, y, z, w) where w is 1 for points and 0 for vectors.
 class Tuple
@@ -52,6 +54,6 @@ class Tuple
     end
 
     def -@
-        vector(0, 0, 0) - self
+        Vector.new(0, 0, 0) - self
     end
 end

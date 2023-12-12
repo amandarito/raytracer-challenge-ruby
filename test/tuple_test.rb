@@ -1,5 +1,9 @@
 require "minitest/autorun"
-require_relative "../lib/main.rb"
+require "minitest/pride"
+require_relative "../lib/tuple.rb"
+require_relative "../lib/point.rb"
+require_relative "../lib/vector.rb"
+require_relative "../lib/color.rb"
 
 class TupleTest < Minitest::Test
     def test_tuple_with_w1_is_a_point
@@ -23,13 +27,13 @@ class TupleTest < Minitest::Test
     end
 
     def test_point_creation_method
-        p0 = point(4, -4, 3)
+        p0 = Point.new(4, -4, 3)
         p1 = Tuple.new(4, -4, 3, 1)
         assert_equal p0, p1
     end
 
     def test_vector_creation_method
-        v0 = vector(4, -4, 3)
+        v0 = Vector.new(4, -4, 3)
         v1 = Tuple.new(4, -4, 3, 0)
         assert_equal v0, v1
     end
@@ -42,16 +46,16 @@ class TupleTest < Minitest::Test
     end
 
     def test_tuple_subtraction
-        p1 = point(3, 2, 1)
-        p2 = point(5, 6, 7)
-        p3 = vector(-2, -4, -6)
+        p1 = Point.new(3, 2, 1)
+        p2 = Point.new(5, 6, 7)
+        p3 = Vector.new(-2, -4, -6)
         assert_equal p1 - p2, p3
     end
 
     def test_vector_subtract_from_zero
-        v0 = vector(0, 0, 0)
-        v1 = vector(1, -2, 3)
-        v2 = vector(-1, 2, -3)
+        v0 = Vector.new(0, 0, 0)
+        v1 = Vector.new(1, -2, 3)
+        v2 = Vector.new(-1, 2, -3)
         assert_equal v0 - v1, v2
     end
 
@@ -76,86 +80,86 @@ class TupleTest < Minitest::Test
     end
 
     def test_vector_magnitude_0
-        v = vector(1, 0, 0)
+        v = Vector.new(1, 0, 0)
         assert_equal v.magnitude, 1
     end
 
     def test_vector_magnitude_1
-        v = vector(0, 1, 0)
+        v = Vector.new(0, 1, 0)
         assert_equal v.magnitude, 1
     end
 
     def test_vector_magnitude_2
-        v = vector(0, 0, 1)
+        v = Vector.new(0, 0, 1)
         assert_equal v.magnitude, 1
     end
 
     def test_vector_magnitude_3
-        v = vector(1, 2, 3)
+        v = Vector.new(1, 2, 3)
         assert_equal v.magnitude, Math.sqrt(14)
     end
 
     def test_vector_magnitude_4
-        v = vector(-1, -2, -3)
+        v = Vector.new(-1, -2, -3)
         assert_equal v.magnitude, Math.sqrt(14)
     end
 
     def test_vector_normalize_simple
-        v = vector(4, 0, 0)
-        assert_equal v.normalized, vector(1, 0, 0)
+        v = Vector.new(4, 0, 0)
+        assert_equal v.normalized, Vector.new(1, 0, 0)
     end
 
     def test_vector_normalize_complex
-        v = vector(1, 2, 3)
-        assert_equal v.normalized, vector(1/Math.sqrt(14), 2/Math.sqrt(14), 3/Math.sqrt(14))
+        v = Vector.new(1, 2, 3)
+        assert_equal v.normalized, Vector.new(1/Math.sqrt(14), 2/Math.sqrt(14), 3/Math.sqrt(14))
     end
 
     def test_vector_normalize_then_magnitude
-        v = vector(1, 2, 3)
+        v = Vector.new(1, 2, 3)
         assert_equal v.normalized.magnitude, 1
     end
 
     def test_vector_dot_product
-        a = vector(1, 2, 3)
-        b = vector(2, 3, 4)
+        a = Vector.new(1, 2, 3)
+        b = Vector.new(2, 3, 4)
         assert_equal dot(a,b), 20
     end
 
     def test_vector_cross_product
-        a = vector(1, 2, 3)
-        b = vector(2, 3, 4)
-        assert_equal cross(a, b), vector(-1, 2, -1)
-        assert_equal cross(b, a), vector(1, -2, 1)
+        a = Vector.new(1, 2, 3)
+        b = Vector.new(2, 3, 4)
+        assert_equal cross(a, b), Vector.new(-1, 2, -1)
+        assert_equal cross(b, a), Vector.new(1, -2, 1)
     end
 
     def test_color_is_rgb_tuple
-        c = color(-0.5, 0.4, 1.7)
+        c = Color.new(-0.5, 0.4, 1.7)
         assert_equal c.red, -0.5
         assert_equal c.green, 0.4
         assert_equal c.blue, 1.7
     end
 
     def test_color_addition
-        c1 = color(0.9, 0.6, 0.75)
-        c2 = color(0.7, 0.1, 0.25)
-        assert_equal c1 + c2, color(1.6, 0.7, 1.0)
+        c1 = Color.new(0.9, 0.6, 0.75)
+        c2 = Color.new(0.7, 0.1, 0.25)
+        assert_equal c1 + c2, Color.new(1.6, 0.7, 1.0)
     end
 
     def test_color_subtraction
-        c1 = color(0.9, 0.6, 0.75)
-        c2 = color(0.7, 0.1, 0.25)
-        assert_equal c1 - c2, color(0.2, 0.5, 0.5)
+        c1 = Color.new(0.9, 0.6, 0.75)
+        c2 = Color.new(0.7, 0.1, 0.25)
+        assert_equal c1 - c2, Color.new(0.2, 0.5, 0.5)
     end
 
     def test_color_scalar_multiplication
-        c = color(0.2, 0.3, 0.4)
-        assert_equal c * 2, color(0.4, 0.6, 0.8)
+        c = Color.new(0.2, 0.3, 0.4)
+        assert_equal c * 2, Color.new(0.4, 0.6, 0.8)
     end
 
     def test_color_multiplication
-        c1 = color(1, 0.2, 0.4)
-        c2 = color(0.9, 1, 0.1)
-        assert_equal c1 * c2, color(0.9, 0.2, 0.04)
+        c1 = Color.new(1, 0.2, 0.4)
+        c2 = Color.new(0.9, 1, 0.1)
+        assert_equal c1 * c2, Color.new(0.9, 0.2, 0.04)
     end
 end
 

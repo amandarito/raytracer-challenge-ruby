@@ -9,17 +9,5 @@ def dot(a, b)
 end
 
 def cross(a, b)
-    vector(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x)
-end
-
-def point(x, y, z)
-    Point.new(x, y, z)
-end
-
-def vector(x, y, z)
-    Vector.new(x, y, z)
-end
-
-def color(r, g, b)
-    Color.new(r, g, b)
+    Vector.new(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x)
 end

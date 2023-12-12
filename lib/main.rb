@@ -1,6 +1,7 @@
 require_relative "tuple.rb"
 require_relative "point.rb"
 require_relative "vector.rb"
+require_relative "color.rb"
 require_relative "helpers.rb"
 
 # projectile console demo

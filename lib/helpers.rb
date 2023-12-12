@@ -19,3 +19,7 @@ end
 def vector(x, y, z)
     Vector.new(x, y, z)
 end
+
+def color(r, g, b)
+    Color.new(r, g, b)
+end

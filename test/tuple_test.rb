@@ -48,29 +48,29 @@ class TupleTest < Minitest::Test
         assert_equal p1 - p2, p3
     end
 
-    def test_subtract_from_zero
+    def test_vector_subtract_from_zero
         v0 = vector(0, 0, 0)
         v1 = vector(1, -2, 3)
         v2 = vector(-1, 2, -3)
         assert_equal v0 - v1, v2
     end
 
-    def test_negate_self
+    def test_tuple_negation
         t1 = Tuple.new(1, -2, 3, -4)
         assert_equal (-t1), Tuple.new(-1, 2, -3, 4)
     end
 
-    def test_multiply_by_scalar
+    def test_tuple_scalar_multiplication
         a = Tuple.new(1, -2, 3, -4)
         assert_equal a * 3.5, Tuple.new(3.5, -7, 10.5, -14)
     end
 
-    def test_multiply_by_fraction
+    def test_tuple_fraction_multiplication
         a = Tuple.new(1, -2, 3, -4)
         assert_equal a * 0.5, Tuple.new(0.5, -1, 1.5, -2)
     end
 
-    def test_divide_by_scalar
+    def test_tuple_scalar_division
         a = Tuple.new(1, -2, 3, -4)
         assert_equal a / 2, Tuple.new(0.5, -1, 1.5, -2)
     end
@@ -100,32 +100,62 @@ class TupleTest < Minitest::Test
         assert_equal v.magnitude, Math.sqrt(14)
     end
 
-    def test_normalize_vector_simple
+    def test_vector_normalize_simple
         v = vector(4, 0, 0)
         assert_equal v.normalized, vector(1, 0, 0)
     end
 
-    def test_normalize_vector_complex
+    def test_vector_normalize_complex
         v = vector(1, 2, 3)
         assert_equal v.normalized, vector(1/Math.sqrt(14), 2/Math.sqrt(14), 3/Math.sqrt(14))
     end
 
-    def test_magnitude_of_normalized_vector
+    def test_vector_normalize_then_magnitude
         v = vector(1, 2, 3)
         assert_equal v.normalized.magnitude, 1
     end
 
-    def test_dot_product
+    def test_vector_dot_product
         a = vector(1, 2, 3)
         b = vector(2, 3, 4)
         assert_equal dot(a,b), 20
     end
 
-    def test_cross_product
+    def test_vector_cross_product
         a = vector(1, 2, 3)
         b = vector(2, 3, 4)
         assert_equal cross(a, b), vector(-1, 2, -1)
         assert_equal cross(b, a), vector(1, -2, 1)
+    end
+
+    def test_color_is_rgb_tuple
+        c = color(-0.5, 0.4, 1.7)
+        assert_equal c.red, -0.5
+        assert_equal c.green, 0.4
+        assert_equal c.blue, 1.7
+    end
+
+    def test_color_addition
+        c1 = color(0.9, 0.6, 0.75)
+        c2 = color(0.7, 0.1, 0.25)
+        assert_equal c1 + c2, color(1.6, 0.7, 1.0)
+    end
+
+    def test_color_subtraction
+        c1 = color(0.9, 0.6, 0.75)
+        c2 = color(0.7, 0.1, 0.25)
+        assert_equal c1 - c2, color(0.2, 0.5, 0.5)
+    end
+
+    def test_color_scalar_multiplication
+        c = color(0.2, 0.3, 0.4)
+        assert_equal c * 2, color(0.4, 0.6, 0.8)
+    end
+
+    def test_color_multiplication
+        c1 = color(1, 0.2, 0.4)
+        c2 = color(0.9, 1, 0.1)
+        assert_equal c1 * c2, color(0.9, 0.2, 0.04)
     end
 end
 

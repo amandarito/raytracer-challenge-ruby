@@ -2,12 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitest (5.20.0)
+    rufo (0.16.3)
+    word_wrap (1.0.0)
 
 PLATFORMS
   arm64-darwin-23
 
 DEPENDENCIES
   minitest
+  rufo
+  word_wrap
 
 BUNDLED WITH
    2.4.10

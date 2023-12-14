@@ -1,15 +1,21 @@
-# Ray Tracer Challenge
+# ray tracer challenge
 
-Working with this book: http://raytracerchallenge.com/
+working with this book: http://raytracerchallenge.com/
 
-## Tools:
+the book defines tests that the code should pass, but all implementation is my own.
 
-- Ruby 3.2.2
-- Minitest
+## tools:
 
-## Timeline:
+- ruby 3.2.2
+- minitest
+- rufo
 
-Dec 7 2023 - first commit
+## milestones:
 
-- Implemented basic Tuple, Point, and Vector classes in main.rb.
-- Created tests for Tuple class in tests.rb.
+### chapters 1 + 2
+
+tuple, point, vector, color, and canvas come together to create a 2d image!
+
+this image simulates a projectile starting at point (0, 1) with a velocity of 10 \* (2, 1) and a gravity + headwind velocity of (-0.1, -0.1).
+
+![projectile](./exports/projectile0.png)

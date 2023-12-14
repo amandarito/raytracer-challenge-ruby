@@ -11,7 +11,7 @@ projectile = Struct.new(:position, :velocity).new(Point.new(0, 1, 0), Vector.new
 
 environment = Struct.new(:gravity, :wind).new(Vector.new(0, -0.1, 0), Vector.new(-0.1, 0, 0))
 
-image = Canvas.new(405, 110, Color.new(0, 0, 0))
+image = Canvas.new(205, 55, Color.new(0.1, 0.1, 0.1))
 
 def tick(env, proj)
   position = proj.position + proj.velocity
@@ -24,9 +24,10 @@ puts "starting position: #{projectile.position}\nstarting velocity: #{projectile
 while (projectile.position.y > 0)
   puts "t#{count}\t| position = #{projectile.position}  velocity = #{projectile.velocity}"
 
-  xpos = projectile.position.x
-  ypos = image.height - projectile.position.y
-  px_color = Color.new(1, xpos / image.width, ypos / image.height)
+  xpos = (projectile.position.x / 2).round
+  ypos = (image.height - projectile.position.y / 2 - 1).round
+  px_color = Color.new(projectile.position.x / image.width / 2, projectile.position.y / image.height / 2, 0.9)
+
   image.write_pixel(xpos, ypos, px_color)
   projectile = tick(environment, projectile)
   count += 1

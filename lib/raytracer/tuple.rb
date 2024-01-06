@@ -18,11 +18,11 @@ module RT
     end
 
     def point?
-      w == 1.0
+      w == 1
     end
 
     def vector?
-      w == 0.0
+      w == 0
     end
 
     def magnitude

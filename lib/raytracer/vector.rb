@@ -7,11 +7,11 @@ module RT
     end
 
     def dot(b)
-      self.x * b.x + self.y * b.y + self.z * b.z + self.w * b.w
+      x * b.x + y * b.y + z * b.z + w * b.w
     end
 
     def cross(b)
-      Vector.new(self.y * b.z - self.z * b.y, self.z * b.x - self.x * b.z, self.x * b.y - self.y * b.x)
+      Vector.new(y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x)
     end
   end
 end

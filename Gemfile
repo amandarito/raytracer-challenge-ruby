@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
 gem "minitest"
-gem "rufo"
+gem "standard"
 gem "word_wrap"

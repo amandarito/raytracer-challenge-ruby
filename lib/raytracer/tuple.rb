@@ -26,16 +26,16 @@ module RT
     end
 
     def magnitude
-      Math.sqrt(@x ** 2 + @y ** 2 + @z ** 2 + @w ** 2)
+      Math.sqrt(@x**2 + @y**2 + @z**2 + @w**2)
     end
 
     def normalized
-      mag = self.magnitude
+      mag = magnitude
       Tuple.new(@x / mag, @y / mag, @z / mag, @w / mag)
     end
 
     def ==(other)
-      (fp_equal?(@x, other.x) and fp_equal?(@y, other.y) and fp_equal?(@z, other.z) and fp_equal?(@w, other.w))
+      fp_equal?(@x, other.x) and fp_equal?(@y, other.y) and fp_equal?(@z, other.z) and fp_equal?(@w, other.w)
     end
 
     def +(other)
@@ -46,16 +46,16 @@ module RT
       Tuple.new(@x - other.x, @y - other.y, @z - other.z, @w - other.w)
     end
 
-    def *(scalar)
-      Tuple.new(@x * scalar, @y * scalar, @z * scalar, @w * scalar)
+    def *(other)
+      Tuple.new(@x * other, @y * other, @z * other, @w * other)
     end
 
-    def /(scalar)
-      self * (1.0 / scalar)
+    def /(other)
+      self * (1.0 / other)
     end
 
     def -@
-      Vector.new(0, 0, 0) - self
+      Tuple.new(0, 0, 0, 0) - self
     end
   end
 end

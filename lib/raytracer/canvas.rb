@@ -13,17 +13,17 @@ module RT
     end
 
     def write_pixel(x, y, color)
-      self.pixels[y][x] = color
+      pixels[y][x] = color
     end
 
     # use this function instead of [] operator.
     def pixel_at(x, y)
-      self.pixels[y][x]
+      pixels[y][x]
     end
 
     # debugging
     def print_grid
-      self.pixels.each do |row|
+      pixels.each do |row|
         row.each do |color|
           p color
         end
@@ -33,21 +33,21 @@ module RT
 
     def to_ppm
       ppm = ""
-      ppm += self.ppm_header
-      ppm += self.content_to_ppm
+      ppm += ppm_header
+      ppm += content_to_ppm
     end
 
     def ppm_header
       <<~TEXT
         P3
-        #{self.width} #{self.height}
+        #{width} #{height}
         255
       TEXT
     end
 
     def content_to_ppm
       content = []
-      self.pixels.each do |row|
+      pixels.each do |row|
         content.append(row_to_ppm(row))
       end
       content.join

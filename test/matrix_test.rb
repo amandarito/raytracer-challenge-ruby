@@ -192,7 +192,7 @@ module RT
         [4, -9, 3, -7],
         [9, 1, 7, -6]]
       assert_equal a.det, -2120
-      assert a.is_invertible?
+      assert a.invertible?
     end
 
     def test_matrix_invertible_false
@@ -202,7 +202,7 @@ module RT
         [0, -5, 1, 5],
         [0, 0, 0, 0]]
       assert_equal a.det, 0
-      refute a.is_invertible?
+      refute a.invertible?
     end
 
     def test_matrix_44_inverse0

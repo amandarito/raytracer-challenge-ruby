@@ -32,9 +32,7 @@ module RT
     end
 
     def to_ppm
-      ppm = ""
-      ppm += ppm_header
-      ppm += content_to_ppm
+      ppm_header + content_to_ppm
     end
 
     def ppm_header

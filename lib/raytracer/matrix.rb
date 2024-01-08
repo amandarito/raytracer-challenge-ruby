@@ -27,7 +27,7 @@ module RT
       b.det
     end
 
-    def is_invertible?
+    def invertible?
       !det.zero?
     end
 
@@ -56,6 +56,51 @@ module RT
         [1, 0, 0, x],
         [0, 1, 0, y],
         [0, 0, 1, z],
+        [0, 0, 0, 1]
+      ]
+    end
+
+    def self.scaling(x, y, z)
+      Matrix[
+        [x, 0, 0, 0],
+        [0, y, 0, 0],
+        [0, 0, z, 0],
+        [0, 0, 0, 1]
+      ]
+    end
+
+    def self.rotation_x(r)
+      Matrix[
+        [1, 0, 0, 0],
+        [0, Math.cos(r), -Math.sin(r), 0],
+        [0, Math.sin(r), Math.cos(r), 0],
+        [0, 0, 0, 1]
+      ]
+    end
+
+    def self.rotation_y(r)
+      Matrix[
+        [Math.cos(r), 0, Math.sin(r), 0],
+        [0, 1, 0, 0],
+        [-Math.sin(r), 0, Math.cos(r), 0],
+        [0, 0, 0, 1]
+      ]
+    end
+
+    def self.rotation_z(r)
+      Matrix[
+        [Math.cos(r), -Math.sin(r), 0, 0],
+        [Math.sin(r), Math.cos(r), 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]
+      ]
+    end
+
+    def self.shearing(xy, xz, yx, yz, zx, zy)
+      Matrix[
+        [1, xy, xz, 0],
+        [yx, 1, yz, 0],
+        [zx, zy, 1, 0],
         [0, 0, 0, 1]
       ]
     end

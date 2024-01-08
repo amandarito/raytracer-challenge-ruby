@@ -1,6 +1,7 @@
 require_relative "tuple"
 
 module RT
+  # Color stores `(red, gree, blue)` values, inheriting from Tuple.
   class Color < Tuple
     alias_method :red, :x
     alias_method :green, :y

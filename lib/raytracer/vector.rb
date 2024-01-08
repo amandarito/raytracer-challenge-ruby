@@ -1,6 +1,7 @@
 require_relative "tuple"
 
 module RT
+  # Vector is a Tuple with component `w` set to `0`.
   class Vector < Tuple
     def initialize(x, y, z)
       super(x, y, z, 0)

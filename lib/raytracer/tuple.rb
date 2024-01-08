@@ -1,8 +1,8 @@
 require_relative "helpers"
 
 module RT
-  # Tuple is the fundamental point / vector class.
-  # Attributes (x, y, z, w) where w is 1 for points and 0 for vectors.
+  # Tuple is the base class for Point and Vector.
+  # Stored as `(x, y, z, w)`.
   class Tuple
     attr_reader :x, :y, :z, :w
 

@@ -2,7 +2,7 @@ require_relative "color"
 require "word_wrap"
 
 module RT
-  # Canvas is a 2d grid of Colors with rows = height and cols = width.
+  # Canvas is a 2d grid of `Color` with rows = height and cols = width.
   class Canvas
     attr_reader :width, :height, :pixels
 

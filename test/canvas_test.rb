@@ -27,11 +27,11 @@ module RT
       c = Canvas.new(5, 3)
       ppm = c.ppm_header
       assert_equal ppm,
-                   <<~TEXT
-                     P3
-                     5 3
-                     255
-                   TEXT
+        <<~TEXT
+          P3
+          5 3
+          255
+        TEXT
     end
 
     def test_ppm_pixel_data_creation
@@ -44,13 +44,13 @@ module RT
       c.write_pixel(4, 2, c3)
       ppm_content = c.to_ppm
       assert_equal ppm_content, <<~TEXT
-                     P3
-                     5 3
-                     255
-                     255 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-                     0 0 0 0 0 0 0 128 0 0 0 0 0 0 0
-                     0 0 0 0 0 0 0 0 0 0 0 0 0 0 255
-                   TEXT
+        P3
+        5 3
+        255
+        255 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 128 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 255
+      TEXT
     end
 
     def test_ppm_auto_line_splitting
@@ -58,9 +58,9 @@ module RT
       c = Canvas.new(10, 2, c1)
       ppm = c.content_to_ppm
       assert_equal ppm, <<~TEXT
-                     255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
-                     255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
-                   TEXT
+        255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
+        255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153
+      TEXT
     end
 
     def test_ppm_ends_in_newline

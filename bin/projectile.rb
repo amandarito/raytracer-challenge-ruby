@@ -1,15 +1,19 @@
-require_relative "tuple.rb"
-require_relative "point.rb"
-require_relative "vector.rb"
-require_relative "color.rb"
-require_relative "canvas.rb"
-require_relative "helpers.rb"
+# jan 9, 2024
+# amandarito
+# ch 1 + 2 milestone: projectile demo
 
-# projectile console demo
+require_relative "../lib/raytracer/tuple"
+require_relative "../lib/raytracer/point"
+require_relative "../lib/raytracer/vector"
+require_relative "../lib/raytracer/color"
+require_relative "../lib/raytracer/canvas"
+require_relative "../lib/raytracer/helpers"
 
-projectile = Struct.new(:position, :velocity).new(Point.new(0, 1, 0), Vector.new(10, 5, 0).normalized * 10)
+projectile = Struct.new(:position, :velocity).new(Point.new(0, 1, 0),
+  Vector.new(10, 5, 0).normalized * 10)
 
-environment = Struct.new(:gravity, :wind).new(Vector.new(0, -0.1, 0), Vector.new(-0.1, 0, 0))
+environment = Struct.new(:gravity, :wind).new(Vector.new(0, -0.1, 0),
+  Vector.new(-0.1, 0, 0))
 
 image = Canvas.new(205, 55, Color.new(0.1, 0.1, 0.1))
 
@@ -26,7 +30,8 @@ while (projectile.position.y > 0)
 
   xpos = (projectile.position.x / 2).round
   ypos = (image.height - projectile.position.y / 2 - 1).round
-  px_color = Color.new(projectile.position.x / image.width / 2, projectile.position.y / image.height / 2, 0.9)
+  px_color = Color.new(projectile.position.x / image.width / 2,
+    projectile.position.y / image.height / 2, 0.9)
 
   image.write_pixel(xpos, ypos, px_color)
   projectile = tick(environment, projectile)

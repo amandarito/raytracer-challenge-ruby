@@ -22,6 +22,6 @@ this image simulates a projectile starting at point (0, 1) with a velocity of 10
 
 ### chapters 3 + 4
 
-matrix transformations are used to rotate a point around the origin, just like a clock.
+matrix transformations are used to rotate a point around the origin 12 times, like the times on a clock.
 
 <img src="./exports/clock.png" alt="clock" width="400"/>

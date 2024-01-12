@@ -34,8 +34,13 @@ module RT
       Tuple.new(@x / mag, @y / mag, @z / mag, @w / mag)
     end
 
+    def dot(b)
+      x * b.x + y * b.y + z * b.z + w * b.w
+    end
+
     def ==(other)
-      fp_equal?(@x, other.x) and fp_equal?(@y, other.y) and fp_equal?(@z, other.z) and fp_equal?(@w, other.w)
+      fp_equal?(@x, other.x) and fp_equal?(@y, other.y) \
+      and fp_equal?(@z, other.z) and fp_equal?(@w, other.w)
     end
 
     def +(other)

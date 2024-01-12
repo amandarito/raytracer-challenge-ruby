@@ -113,7 +113,8 @@ module RT
 
     def test_vector_normalize_complex
       v = Vector.new(1, 2, 3)
-      assert_equal v.normalized, Vector.new(1 / Math.sqrt(14), 2 / Math.sqrt(14), 3 / Math.sqrt(14))
+      assert_equal v.normalized,
+        Vector.new(1 / Math.sqrt(14), 2 / Math.sqrt(14), 3 / Math.sqrt(14))
     end
 
     def test_vector_normalize_then_magnitude

@@ -1,9 +1,19 @@
+require_relative "matrix"
 require_relative "intersection"
 
 module RT
   class Sphere
+    attr_accessor :transform
+
+    def initialize
+      @transform = Matrix.identity(4)
+    end
+
     def intersect(ray)
-      # calculate discriminant...
+      # use sphere's transform on the ray
+      ray = ray.transform(transform.inverse)
+
+      # calculate discriminant
       sphere_to_ray = ray.origin - Point.new(0, 0, 0)
       a = ray.direction.dot(ray.direction)
       b = 2 * ray.direction.dot(sphere_to_ray)

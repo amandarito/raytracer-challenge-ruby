@@ -22,5 +22,21 @@ module RT
       assert_equal r.position(-1), Point.new(1, 3, 4)
       assert_equal r.position(2.5), Point.new(4.5, 3, 4)
     end
+
+    def test_ray_translation
+      r = Ray.new(Point.new(1, 2, 3), Vector.new(0, 1, 0))
+      m = Matrix.translation(3, 4, 5)
+      r2 = r.transform(m)
+      assert_equal r2.origin, Point.new(4, 6, 8)
+      assert_equal r2.direction, Vector.new(0, 1, 0)
+    end
+
+    def test_ray_scaling
+      r = Ray.new(Point.new(1, 2, 3), Vector.new(0, 1, 0))
+      m = Matrix.scaling(2, 3, 4)
+      r2 = r.transform(m)
+      assert_equal r2.origin, Point.new(2, 6, 12)
+      assert_equal r2.direction, Vector.new(0, 3, 0)
+    end
   end
 end

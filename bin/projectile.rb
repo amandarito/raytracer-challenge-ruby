@@ -15,7 +15,7 @@ projectile = Struct.new(:position, :velocity).new(Point.new(0, 1, 0),
 environment = Struct.new(:gravity, :wind).new(Vector.new(0, -0.1, 0),
   Vector.new(-0.1, 0, 0))
 
-image = Canvas.new(205, 55, Color.new(0.1, 0.1, 0.1))
+image = Canvas.new(205, 55)
 
 def tick(env, proj)
   position = proj.position + proj.velocity

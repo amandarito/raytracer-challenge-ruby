@@ -52,6 +52,7 @@ module RT
       p2 = Point.new(5, 6, 7)
       p3 = Vector.new(-2, -4, -6)
       assert_equal p1 - p2, p3
+      true
     end
 
     def test_vector_subtract_from_zero
